@@ -124,7 +124,8 @@ set background=dark
 set tabstop=4
 set ai
 set shiftwidth=4
-set smarttab
+"set smarttab
+set expandtab
 set showmatch
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [x=%04v,y=%04l][%p%%]\ [LEN=%L]
 "set mouse=a         " Use the mouse to position, resize of splits, visual select and more :)
