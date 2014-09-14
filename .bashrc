@@ -76,14 +76,5 @@ fi
 export EDITOR=vim
 alias grep='grep --exclude-dir=.svn'
 alias jugar='mame blazstar.zip'
-export PATH="$HOME/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
+export PATH="$HOME/bin:$HOME/.phpenv/bin:$PATH"
 
-# gitprompt configuration
-# https://github.com/magicmonty/bash-git-prompt
-
-# Set config variables first
-GIT_PROMPT_ONLY_IN_REPO=1
-
-# as last entry source the gitprompt script
-source ~/program/os/bash-git-prompt/gitprompt.sh
