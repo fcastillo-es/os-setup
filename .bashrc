@@ -78,3 +78,6 @@ alias grep='grep --exclude-dir=.svn'
 alias jugar='mame blazstar.zip'
 export PATH="$HOME/bin:$HOME/.phpenv/bin:$PATH"
 
+#Symfony development
+alias sf='php app/console'
+alias sfcc='php app/console cache:clear'
