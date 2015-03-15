@@ -84,3 +84,4 @@ alias sfcc='php app/console cache:clear'
 # up & down map to history search once a command has been started.
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
+
