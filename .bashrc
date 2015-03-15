@@ -75,9 +75,12 @@ fi
 
 export EDITOR=vim
 alias grep='grep --exclude-dir=.svn'
-alias jugar='mame blazstar.zip'
-export PATH="$HOME/bin:$HOME/.phpenv/bin:$PATH"
+export PATH="$HOME/program/os/os-setup/bin:$HOME/bin:$PATH"
 
 #Symfony development
 alias sf='php app/console'
 alias sfcc='php app/console cache:clear'
+
+# up & down map to history search once a command has been started.
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
