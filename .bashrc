@@ -85,3 +85,5 @@ alias sfcc='php app/console cache:clear'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+# Enable xdebug for cli commands
+alias xdebug='export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=127.0.0.1"'
