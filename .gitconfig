@@ -7,3 +7,5 @@
 	br = branch
 	ls = log --decorate --oneline
 	ll = log --decorate --numstat
+    log-files = log --name-status
+    log-lines = log --stat
