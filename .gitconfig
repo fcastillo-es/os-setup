@@ -9,3 +9,5 @@
 	ll = log --decorate --numstat
     log-files = log --name-status
     log-lines = log --stat
+[rebase]
+  autosquash = true

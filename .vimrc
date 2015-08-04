@@ -219,3 +219,6 @@ au BufWritePost *.\(?:sh\|py\|pl\|rb\) :silent !chmod a+x <afile>
 " Twig sintax highlight
 au BufRead,BufNewFile *.twig set filetype=htmljinja
 au BufRead,BufNewFile *.html.twig set filetype=jinja
+
+" clear the search buffer when hitting return
+:nnoremap <CR> :nohlsearch<cr>
