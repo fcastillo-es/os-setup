@@ -75,7 +75,7 @@ fi
 
 export EDITOR=vim
 alias grep='grep --exclude-dir=.svn'
-export PATH="$HOME/program/os/os-setup/bin:$HOME/bin:$PATH"
+export PATH="$HOME/program/os/os-setup/bin:$HOME/bin:$PATH:$HOME/.composer/vendor/bin"
 
 #Symfony development
 alias sf='php app/console'
