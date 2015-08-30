@@ -222,3 +222,6 @@ au BufRead,BufNewFile *.html.twig set filetype=jinja
 
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
+
+" wrap commit message lines to 72
+au FileType gitcommit set tw=72
