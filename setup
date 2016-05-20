@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+if [ "$(whoami)" != "root" ]; then
+    echo "You don't have sufficient privileges to run this script."
+    exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
+# Package instalations
+
+command -v tmux >/dev/null 2>&1
+if [ $? -eq 1 ]
+    then apt-get install tmux
+    else echo "tmux already installed"
+fi
+
+command -v git>/dev/null 2>&1
+if [ $? -eq 1 ]
+    then apt-get install git
+    else echo "git already installed"
+fi
+
+
+# Configuration files
+
+if [ ! -f $HOME/.tmux.conf ]; then
+    echo "Generating tmux configuration file"
+    echo "source-file ${DIR}/.tmux.conf" > $HOME/.tmux.conf
+    chown "${SUDO_UID}:${SUDO_GID}" $HOME/.tmux.conf
+fi
+
+if [ ! -f $HOME/.vimrc ]; then
+    echo "Generating vim configuration file"
+    echo "source ${DIR}/.vimrc" > $HOME/.vimrc
+    chown "${SUDO_UID}:${SUDO_GID}" $HOME/.vimrc
+fi
+
+if [ ! -f $HOME/.gitconfig ]; then
+    echo "Generating git configuration file"
+    printf "[include]\n    path = ${DIR}/.gitconfig\n" > $HOME/.gitconfig
+    chown "${SUDO_UID}:${SUDO_GID}" $HOME/.gitconfig
+    read -p "Configure git user? " yn
+    while true; do
+        case $yn in
+            [Yy]* ) 
+                read -p "User name: " name
+                git config --global user.name $name
+                read -p "User email: " email
+                git config --global user.email $email
+                break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+fi
+
+BASH_IMPORT="source $DIR/.bashrc"
+if [ ! -f $HOME/.bashrc ]; then
+    echo "Generating bash configuration"
+    echo $BASH_IMPORT > $HOME/.bashrc
+    chown "${SUDO_UID}:${SUDO_GID}" $HOME/.bashrc
+elif ! grep --quiet "$BASH_IMPORT" $HOME/.bashrc; then
+    echo "Updating bash configuration: \"$BASH_IMPORT\" $HOME/.bashrc;"
+    echo $BASH_IMPORT >> $HOME/.bashrc
+fi
+
